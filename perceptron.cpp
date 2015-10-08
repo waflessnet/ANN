@@ -4,6 +4,8 @@ using namespace std;
 #define EPOCA 200 // numero de i del entrenamiento
 #define K 0.2f // taza de aprendizaje
 
+//http://sauruxum.blogspot.cl/2010/10/entrenamiento-del-perceptron-taller-en.html
+
 float TrainNetwork(float x0,float x1,float target);
 float RunNetwork(float x0,float x1); // entrega las salidas
 float sigmoide(float s);
