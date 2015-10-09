@@ -3,6 +3,14 @@
 #include <stdio.h>
 using namespace std;
 
+#ifdef __WIN64
+   #define limpia_pantalla system("cls");
+#endif
+#ifdef __linux
+   #define limpia_pantalla system("clear");
+#endif
+
+
 struct nodo{
    int info;
    int ind;
@@ -44,16 +52,21 @@ int main(){
   		 cout <<" Buscar indice: ";
  		 cin  >> indice;
 		 resultado= buscar(indice,aux);
+ 		 limpia_pantalla;
+  		 cout << "El valor que tiene el indice es:"<<resultado;
          break;
   	 case 2:
 		cout << "Buscar valor: " ;
    	        cin >> indice;
 		resultado = buscarValor(indice,aux);
-   		cout << "Resultado :" <<resultado<<endl;
+		limpia_pantalla;
+   		cout << "El valor esta en el indice :" <<resultado<<endl;
+		cout << "\t \t \t";
 	
 
          break;
          case 3:
+		 
 		 while(nuevo !=NULL){
      			cout << " Dato : "<< nuevo->info <<endl;
 	     		nuevo=nuevo->sgt;
@@ -74,8 +87,8 @@ int main(){
    int i0=0;
     while( nod != NULL){
           if(nod->info == pos){
-                cout <<"El indice donde esta el valor es  :" <<nod->ind<<endl;
-		return nod->info;
+                //cout <<"El indice donde esta el valor es  :" <<nod->ind<<endl;
+		return nod->ind;
           }
        nod = nod->sgt;
        i0++;
@@ -91,7 +104,7 @@ int main(){
     while( nod != NULL){
 	  //cout << "iterador :" <<i0 <<endl;
           if(i0 == (pos-1)){
-                cout <<"Indice en el struct :" <<nod->ind<<endl;
+                //cout <<"Indice en el struct :" <<nod->ind<<endl;
 		return nod->info;
           }
        nod = nod->sgt;
