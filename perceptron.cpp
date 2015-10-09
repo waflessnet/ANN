@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <math.h>
 using namespace std;
 #define EPOCA 200 // numero de i del entrenamiento
 #define K 0.2f // taza de aprendizaje
@@ -15,7 +16,7 @@ float Pesos[2];
 float bias = 1.0f;
 
 int main(){
-  int = 0;
+  int i = 0;
   pesos_init(); // inicializamos
    
    while( i < EPOCA){
@@ -32,6 +33,33 @@ int main(){
      cout << "nn " << " epoca = "<<i<<endl;
  
    }
+    cout << "Verifica resultados :" <<endl;
+    cout << "1,1 = " << RunNetwork(1,1) <<endl;
+    cout << "1,0 = " << RunNetwork(1,0) <<endl;
+    cout << "0, 1 = " << RunNetwork( 0, 1 ) << endl;
+    cout << "0, 0 = " << RunNetwork( 0, 0 ) << endl;
+    cout << "n";
+    cout << "Peso[0] = " << Pesos[0] << endl;
+  cout << "Peso[1] = " << Pesos[1] << endl;
+   
+  //Esto es el bias*W
+  cout << "nbias = " << bias << endl;
+   
+  cout << "nn" << "epoca = " << i << endl;
+  return 0;
+  
+}
+
+float RunNetwork( float x0, float x1 )
+{
+  float net = 0;
+  float out = 0;
+   
+  net = Pesos[0]*x0 + Pesos[1]*x1-bias;
+  net=sigmoide( net );
+   
+  out=net;
+  return out;
 }
 
  float TrainNetwork(float x0, float x1, float target){
@@ -58,7 +86,7 @@ int main(){
 }
   /** function sigmoide ***/
     float sigmoide(float s){
-       return (1/(1+exp(-1*s));
+       return (1/(1+exp(-1*s)));
     }
 
   /*** function inicializar pesos ***/
@@ -69,4 +97,3 @@ int main(){
     }
   }
 
-} 
